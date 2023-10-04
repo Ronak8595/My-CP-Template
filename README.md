@@ -29,6 +29,7 @@ private static class Pair<A, B>
         this.second = second;
     }
 }
+```
 
 ## Exponentiation Function
 
@@ -49,6 +50,7 @@ private static long power(long x, long y, long p)
         }
         return res;
     }
+```
 
 ## Binomial Coefficient
 
@@ -67,6 +69,7 @@ private static long binomialCoeff(long n,long k,long MOD)
         }
         return res;
     }
+```
 
 ## Least Common Multiple
 
@@ -77,6 +80,7 @@ private static long lcm(long a, long b)
     {
         return (a / gcd(a, b)) * b;
     }
+```
 
 ## Greatest Common Divisor
 
@@ -90,6 +94,7 @@ private static long gcd(long a, long b)
         }
         return gcd(b, a % b);
     }
+```
 
 ## Sieve of Eratosthenes
 
@@ -113,6 +118,7 @@ private void sieveOfEratosthenes(int n)
                     System.out.print(i + " ");
             }
     }
+```
 
 ## Input Helper Functions
 
@@ -126,6 +132,7 @@ private static void setArray(int [] arr, int n)
             arr[i] = scn.nextInt();
         }
     }
+````
 
 ## Main Function
 
@@ -140,3 +147,4 @@ public static void main(String[] args) {
       }
       scn.close();
     }
+```
