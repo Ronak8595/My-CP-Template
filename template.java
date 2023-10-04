@@ -39,7 +39,7 @@ public class Main {
         }
         return res;
     }
-    private static long lcm(int a, int b)
+    private static long lcm(long a, long b)
     {
         return (a / gcd(a, b)) * b;
     }
@@ -82,5 +82,5 @@ public class Main {
         
       }
       scn.close();
-  }
+    }
 }
