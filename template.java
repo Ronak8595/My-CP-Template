@@ -1,15 +1,4 @@
 import java.util.*;
-private static class Pair<A, B> 
-{
-        A first;
-        B second;
-        //Pair<Integer, Integer> x = new Pair<Integer, Integer>(1, 2);
-        public Pair(A first, B second)
-        {
-            this.first = first;
-            this.second = second;
-        }
-}
 public class Main {
     // Function to find x ^ n using p as mod
     private static long power(long x, long y, long p)
@@ -83,4 +72,15 @@ public class Main {
       }
       scn.close();
     }
+}
+    public class Pair<A, B> 
+{
+        A first;
+        B second;
+        //Pair<Integer, Integer> x = new Pair<Integer, Integer>(1, 2);
+        public Pair(A first, B second)
+        {
+            this.first = first;
+            this.second = second;
+        }
 }
