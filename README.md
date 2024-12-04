@@ -1,150 +1,86 @@
 # Competitive Programming Template
 
-This template includes common algorithms and utility functions useful in competitive programming. It is designed to be a starting point for coding contests and practice sessions.
+This template provides an overview of key algorithms and data structures that are commonly used in competitive programming. It serves as a starting point for coding contests and practice sessions. The goal is to provide a well-structured and easy-to-reference guide that will help you tackle a wide range of problems efficiently.
+
+## About Me
+
+I'm an enthusiastic competitive programmer with a passion for problem-solving and algorithmic thinking. With experience in solving problems across various platforms, I'm always looking to improve efficiency and learn new techniques. My approach is centered around optimizing solutions for time and space complexity, ensuring robustness and correctness in every solution.
+
+I'm actively involved in competitive programming contests and enjoys mentoring other enthusiasts. My key strengths include my problem-solving skills and my focus on implementing efficient algorithms.
 
 ## Table of Contents
 
-- [Pair Class](#pair-class)
-- [Exponentiation Function](#exponentiation-function)
-- [Binomial Coefficient](#binomial-coefficient)
-- [Least Common Multiple](#least-common-multiple)
-- [Greatest Common Divisor](#greatest-common-divisor)
-- [Sieve of Eratosthenes](#sieve-of-eratosthenes)
-- [Input Helper Functions](#input-helper-functions)
+- [Class Definitions](#class-definitions)
+- [Common Algorithms](#common-algorithms)
+  - [Modular Exponentiation](#modular-exponentiation)
+  - [Greatest Common Divisor (GCD)](#greatest-common-divisor-gcd)
+  - [Least Common Multiple (LCM)](#least-common-multiple-lcm)
+  - [Extended GCD](#extended-gcd)
+- [Mathematical Utilities](#mathematical-utilities)
+  - [Sieve of Eratosthenes](#sieve-of-eratosthenes)
+- [Data Structures](#data-structures)
+  - [Binary Lifting](#binary-lifting)
+  - [Union-Find](#union-find)
+  - [Binary Indexed Tree](#binary-indexed-tree)
+- [Input and Output Helpers](#input-and-output-helpers)
 - [Main Function](#main-function)
 
-## Pair Class
+## Class Definitions
 
-This is a generic class for storing pairs of elements.
+### Pair Class
 
-```java
-private static class Pair<A, B> 
-{
-    A first;
-    B second;
+A class for storing pairs of elements. It is often used to represent two related values together, such as coordinates, key-value pairs, or any two entities that need to be handled together. It provides a simple structure for managing and manipulating pairs efficiently.
 
-    public Pair(A first, B second)
-    {
-        this.first = first;
-        this.second = second;
-    }
-}
-```
+### Tuple Class
 
-## Exponentiation Function
+A class for storing triplets of values. This is useful for problems that require handling three related values at once, such as (x, y, z) coordinates or any combination of three entities.
 
-This function calculates x raised to the power y modulo p.
+## Common Algorithms
 
-```java
-private static long power(long x, long y, long p)
-    {
-        long res = 1;
-        x = x % p;
-    
-        while (y > 0) {
-            if (y % 2 == 1)
-                res = (res * x) % p;
-    
-            y = y >> 1;
-            x = (x * x) % p;
-        }
-        return res;
-    }
-```
+### Modular Exponentiation
 
-## Binomial Coefficient
+Modular exponentiation is used to efficiently calculate large powers under a modulus. This technique is essential for problems where numbers grow exponentially, and you need to reduce the size of the numbers while retaining the correct value. It uses the fast exponentiation technique, which reduces the complexity to logarithmic time.
 
-This function calculates the binomial coefficient nCk modulo MOD.
+### Greatest Common Divisor (GCD)
 
-```java
-private static long binomialCoeff(long n,long k,long MOD)
-    {
-        long res = 1;
-        if (k > n - k)
-            k = n - k;
-        for (int i = 0; i < k; ++i) {
-            res *= (n - i);
-            res /= (i + 1);
-            res %= MOD;
-        }
-        return res;
-    }
-```
+The GCD of two numbers is the largest integer that divides both of them without leaving a remainder. It can be computed efficiently using the Euclidean algorithm. This algorithm is commonly used in problems involving fractions, number theory, or finding common divisors between multiple numbers.
 
-## Least Common Multiple
+### Least Common Multiple (LCM)
 
-This function calculates the least common multiple of two integers, a and b.
+The LCM of two numbers is the smallest number that is divisible by both. The LCM can be derived from the GCD of the numbers. It is used in problems where you need to align cycles or find common multiples of values.
 
-```java
-private static long lcm(long a, long b)
-    {
-        return (a / gcd(a, b)) * b;
-    }
-```
+### Extended GCD
 
-## Greatest Common Divisor
+Extended GCD computes not only the GCD of two numbers but also the coefficients of the equation `ax + by = gcd(a, b)`. This is useful in solving Diophantine equations and applications such as modular inverses.
 
-This function calculates the greatest common divisor of two integers, a and b.
+## Mathematical Utilities
 
-```java
-private static long gcd(long a, long b)
-    {
-        if (b == 0) {
-            return a;
-        }
-        return gcd(b, a % b);
-    }
-```
+### Sieve of Eratosthenes
 
-## Sieve of Eratosthenes
+The Sieve of Eratosthenes is an efficient algorithm to generate all prime numbers up to a given limit. It works by iteratively marking the multiples of each prime starting from 2. This algorithm is widely used in problems involving prime numbers or factorization.
 
-This function prints prime numbers less than or equal to n.
+## Data Structures
 
-```java
-private void sieveOfEratosthenes(int n)
-    {
-            boolean prime[] = new boolean[n + 1];
-            for(int i = 0; i <= n; i++)
-                prime[i] = true;
-    
-            for(int p = 2; p * p <= n; p++){
-                if(prime[p] == true){
-                    for(int i = p * p; i <= n; i += p)
-                        prime[i] = false;
-                }
-            }
-            for(int i = 2; i <= n; i++){
-                if(prime[i] == true)
-                    System.out.print(i + " ");
-            }
-    }
-```
+### Binary Lifting
 
-## Input Helper Functions
+Binary Lifting is a technique used to solve problems related to Lowest Common Ancestor (LCA) in trees. It allows querying the ancestor of a node at a specific distance in logarithmic time. This technique is widely used in tree-based problems such as finding the LCA or path queries.
 
-These functions help in setting the elements of an array from standard input.
+### Union-Find
 
-```java
-private static void setArray(int [] arr, int n)
-    {
-        Scanner scn = new Scanner(System.in);
-        for(int i=0;i<n;i++){
-            arr[i] = scn.nextInt();
-        }
-    }
-````
+The Union-Find (or Disjoint Set Union, DSU) data structure is used to efficiently perform union and find operations on a set of elements. It is widely used in problems related to connected components, graph connectivity, and dynamic connectivity.
+
+### Binary Indexed Tree (BIT)
+
+The Binary Indexed Tree (BIT) is a data structure that allows efficient updates and prefix sum queries. It is often used in problems involving range queries and updates, such as finding the sum of elements in a range or updating the value of an element.
+
+## Input and Output Helpers
+
+Efficient input and output handling is crucial in competitive programming, especially when dealing with large inputs and outputs. Fast input and output functions reduce the overhead and improve the runtime of the program. These helpers handle reading and writing data quickly, ensuring that the program runs within time limits.
 
 ## Main Function
 
-The main function reads input, processes it, and produces output
+The main function serves as the entry point for a competitive programming problem. It reads the input, processes the data, and outputs the result. In some cases, it may need to handle multiple test cases, manage large inputs, or implement specific algorithms. The main function is designed to be modular and efficient.
 
-```java
-public static void main(String[] args) {
-      Scanner scn = new Scanner(System.in);
-      int t = scn.nextInt();
-      while(t-- > 0){
-        
-      }
-      scn.close();
-    }
-```
+---
+
+This template serves as a quick reference for common algorithms, data structures, and techniques that are often needed in competitive programming. It is designed to help you quickly implement solutions during coding contests and practice sessions. Feel free to customize the template and add more features as you learn new concepts. Happy coding! 😊
